@@ -28,7 +28,9 @@
 
 **9- Flush privileges with:** `FLUSH PRIVILEGES;`
 
-**10- You're done!**
+**10- Finally, you can exit writing:** `Quit`
+
+**11- You're done!**
 
 ## Mac:
 
@@ -50,7 +52,9 @@
 
 **9- Flush privileges with:** `FLUSH PRIVILEGES;`
 
-**10- You're done!**
+**10- Finally, you can exit writing:** `Quit`
+
+**11- You're done!**
 
 ## Ubuntu:
 
@@ -107,4 +111,6 @@ Process: 18883 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exite
 
 **9- Flush privileges with:** `FLUSH PRIVILEGES;`
 
-**10- You're done!**
+**10- Finally, you can exit writing:** `Quit`
+
+**11- You're done!**
