@@ -61,7 +61,7 @@ def stringtowrite(protein, eklist, pkey):
             writestring += eklist[i]
             if(i < eklist.__len__()):
                 writestring += ","
-	writestring += " 't"
+        writestring += " 't"
         writestring += cluster[1] + "\t"
         writestring += protein + "\t"
         for i in range(1, info.__len__()):
