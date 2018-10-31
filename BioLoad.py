@@ -129,6 +129,8 @@ else:
 
         print('Delete and re-create previous databases? (y/n):')
         reCreatedb = input();
+        print('Delete and re-create previous info tables? (y/n):')
+        reCreateInfo = input();
         print('Delete and re-create previous CD-HIT database? (y/n):')
         reCreatedbcdhit = input();
 
@@ -206,8 +208,7 @@ else:
             print("Done Adding TARA PCs to the database")
 
 
-
-
+        if(reCreateInfo == "y"):
             # Read and add info into the database
             print("Adding Info file into the database")
             InfoFile = open(sys.argv[2], "r")
@@ -233,7 +234,7 @@ else:
             sql += "bacteria, "
             sql += "low_dna_bacteria, "
             sql += "high_dna_bacteria, "
-            sql += "high_dna_bacteria_pers"
+            sql += "high_dna_bacteria_pers, "
             sql += "env_feature"
             sql += ") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
             
