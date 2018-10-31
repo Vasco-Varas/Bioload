@@ -61,6 +61,7 @@ def stringtowrite(protein, eklist, pkey):
             writestring += eklist[i]
             if(i < eklist.__len__()):
                 writestring += ","
+	writestring += " 't"
         writestring += cluster[1] + "\t"
         writestring += protein + "\t"
         for i in range(1, info.__len__()):
@@ -172,8 +173,8 @@ else:
                 "bacteria VARCHAR(255), "+
                 "low_dna_bacteria VARCHAR(255), "+
                 "high_dna_bacteria VARCHAR(255), "+
-                "high_dna_bacteria_pers VARCHAR(255))")
-
+                "high_dna_bacteria_pers VARCHAR(255), " +
+                "env_feature VARCHAR(255))")
 
         nfClusters = 0
 
@@ -233,11 +234,12 @@ else:
             sql += "low_dna_bacteria, "
             sql += "high_dna_bacteria, "
             sql += "high_dna_bacteria_pers"
-            sql += ") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            sql += "env_feature"
+            sql += ") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
             
             while(count < InfoLen):
                 wl = InfoLines[count].split("\t")
-                val = (wl[1][5:].lstrip('0').replace("_","").replace("SRF","SUR"), wl[8], wl[10], wl[12], wl[13], wl[14], wl[15], wl[16], wl[17], wl[18], wl[19], wl[20], wl[21], wl[22], wl[23], wl[24], wl[25])
+                val = (wl[1][5:].lstrip('0').replace("_","").replace("SRF","SUR"), wl[8], wl[10], wl[12], wl[13], wl[14], wl[15], wl[16], wl[17], wl[18], wl[19], wl[20], wl[21], wl[22], wl[23], wl[24], wl[25], wl[2])
                 mycursor.execute(sql, val)
                 count += 1
                 if count % 10 == 0:
@@ -330,7 +332,7 @@ else:
 
         PCsFile = open(bestFileName("PCs"), "w+")
 
-        PCsFile.write("tara_cluster\ttara_protein\tdepth\tregion\ttemperature\tsalinity\toxygen\tchlorophyl\tnitrite\tphosphate\tnitrite_nitrate\tsilica\tsynechococcus\tprochlorococcus\tbacteria\tlow_dna_bacteria\thigh_dna_bacteria\thigh_dna_bacteria_pers\tuser_proteins...\n")
+        PCsFile.write("user_proteins...\ttara_cluster\ttara_protein\tdepth\tenv_feature\tocean_region\ttemperature_C\tsalinity\toxygen\tchlorophyl\tnitrite\tphosphate\tnitrite_nitrate\tsilica\tsynechococcus\tprochlorococcus\tbacteria\tlow_dna_bacteria\thigh_dna_bacteria\thigh_dna_bacteria_pers\n")
 
         while ex < erclusters.__len__():
             if ex % 1000 == 0:
@@ -341,7 +343,7 @@ else:
             pkey = erclusters[ex][3]
             
             if (last_ercluster != myercluster and last_ercluster != ""):
-                writing = stringtowrite(protein, ekproteinlist, pkey)
+                writing = stringtowrite(last_protein, ekproteinlist, last_pkey)
                 if(writing != ""):
                         PCsFile.write(writing + "\n")
                 last_ercluster = myercluster
@@ -350,6 +352,8 @@ else:
             else:
                 ekproteinlist.append(ekprotein)
             last_ercluster = myercluster
+            last_protein = protein
+            last_pkey = pkey
             ex+=1
         writing = stringtowrite(protein, ekproteinlist, pkey)
         if(writing != ""):
