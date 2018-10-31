@@ -31,6 +31,7 @@ When you run the program you will be asked:
 - **Database user:** The user-name to log in to the MySQL server, this will be used to create a database and a table, so make sure it has the appropriate permissions.
 - **Database password:** the password for the MySQL server user.
 - **Delete and re-create previous databases? (y/n):** you need to put "y" on the first run, or after updates that require you to create the database from scratch.
+- **Delete and re-create previous info tables? (y/n):** you need to put "y" on the first run, or after updates that require you to create the info table from scratch.
 - **Delete and re-create previous CD-HIT database? (y/n):** you need to put "y" if you don't have the same CD-HIT input as the last time that you ran the program.
 
 **Example files:**
