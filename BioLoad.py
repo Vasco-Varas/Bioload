@@ -59,9 +59,9 @@ def stringtowrite(protein, eklist, pkey):
     if(cluster is not None and info is not None):
         for i in range(0, eklist.__len__()):
             writestring += eklist[i]
-            if(i < eklist.__len__()):
+            if(i < eklist.__len__() - 1):
                 writestring += ","
-        writestring += " 't"
+        writestring += "\t"
         writestring += cluster[1] + "\t"
         writestring += protein + "\t"
         for i in range(1, info.__len__()):
@@ -333,7 +333,7 @@ else:
 
         PCsFile = open(bestFileName("PCs"), "w+")
 
-        PCsFile.write("user_proteins...\ttara_cluster\ttara_protein\tdepth\tenv_feature\tocean_region\ttemperature_C\tsalinity\toxygen\tchlorophyl\tnitrite\tphosphate\tnitrite_nitrate\tsilica\tsynechococcus\tprochlorococcus\tbacteria\tlow_dna_bacteria\thigh_dna_bacteria\thigh_dna_bacteria_pers\n")
+        PCsFile.write("user_proteins...\ttara_cluster\ttara_protein\tdepth\tocean_region\ttemperature_C\tsalinity\toxygen\tchlorophyl\tnitrite\tphosphate\tnitrite_nitrate\tsilica\tsynechococcus\tprochlorococcus\tbacteria\tlow_dna_bacteria\thigh_dna_bacteria\thigh_dna_bacteria_pers\tenv_feature\n")
 
         while ex < erclusters.__len__():
             if ex % 1000 == 0:
